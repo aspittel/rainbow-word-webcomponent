@@ -99,12 +99,16 @@ class RainbowText extends HTMLElement {
     this.shadowRoot.appendChild(styleTag)
   }
 
+  addSpanEventListeners (span) {
+    span.addEventListener('mouseover', () => { span.classList.add('hovered') })
+    span.addEventListener('animationend', () => { span.classList.remove('hovered') })
+  }
+
   createSpan (letter) {
     const span = document.createElement('span')
     span.classList.add('letter')
     span.innerHTML = letter
-    span.addEventListener('mouseover', () => { span.classList.add('hovered') })
-    span.addEventListener('animationend', () => { span.classList.remove('hovered') })
+    this.addSpanEventListeners(span)
     return span
   }
 
